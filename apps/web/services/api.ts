@@ -9,6 +9,16 @@ export const fetchProducts = async (): Promise<Product[]> => {
   return res.json();
 };
 
+export const createProduct = async (productData: Partial<Product>): Promise<Product> => {
+  const res = await fetch(`${API_BASE}/products`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(productData)
+  });
+  if (!res.ok) throw new Error('Failed to create product');
+  return res.json();
+};
+
 export const fetchInventory = async (): Promise<InventoryItem[]> => {
   const res = await fetch(`${API_BASE}/inventory`);
   if (!res.ok) throw new Error('Failed to fetch inventory');
@@ -18,10 +28,6 @@ export const fetchInventory = async (): Promise<InventoryItem[]> => {
 export const fetchInboundOrders = async (): Promise<InboundOrder[]> => {
   const res = await fetch(`${API_BASE}/inbound-orders`);
   if (!res.ok) throw new Error('Failed to fetch orders');
-  // The backend might not return items nested by default in simple queries depending on serialization,
-  // but for the detail view we usually fetch specifically. 
-  // For this MVP we will rely on SQLAlchemy relationship lazy/eager loading behavior or serialization.
-  // We assume the backend uses a schema that includes items or we fetch details separately.
   return res.json();
 };
 

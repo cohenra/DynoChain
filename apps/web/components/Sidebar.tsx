@@ -1,5 +1,5 @@
 import React from 'react';
-import { Package, Truck, Receipt, LayoutDashboard, Settings, Bot } from 'lucide-react';
+import { Package, Truck, Receipt, LayoutDashboard, Settings, Bot, Database } from 'lucide-react';
 
 interface SidebarProps {
   activeTab: string;
@@ -10,6 +10,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, toggleAI }) => {
   const menuItems = [
     { id: 'dashboard', label: 'לוח בקרה', icon: <LayoutDashboard size={20} /> },
+    { id: 'products', label: 'קטלוג מוצרים', icon: <Database size={20} /> },
     { id: 'inbound', label: 'קבלת סחורה', icon: <Truck size={20} /> },
     { id: 'inventory', label: 'ניהול מלאי', icon: <Package size={20} /> },
     { id: 'billing', label: 'חיובים וחוזים', icon: <Receipt size={20} /> },

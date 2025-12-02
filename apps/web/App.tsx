@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard';
 import Inventory from './pages/Inventory';
 import Inbound from './pages/Inbound';
 import Billing from './pages/Billing';
+import ProductMaster from './pages/ProductMaster';
 import { Bot, X, Send, Loader2 } from 'lucide-react';
 import { generateAIResponse } from './services/geminiService';
 import { ChatMessage } from './types';
@@ -36,6 +37,7 @@ function App() {
   const renderContent = () => {
     switch (activeTab) {
       case 'dashboard': return <Dashboard />;
+      case 'products': return <ProductMaster />;
       case 'inventory': return <Inventory />;
       case 'inbound': return <Inbound />;
       case 'billing': return <Billing />;
@@ -53,6 +55,7 @@ function App() {
         <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 sticky top-0 z-10">
           <h2 className="text-xl font-semibold text-slate-800">
             {activeTab === 'dashboard' && 'לוח בקרה'}
+            {activeTab === 'products' && 'קטלוג מוצרים (Master Data)'}
             {activeTab === 'inventory' && 'ניהול מלאי'}
             {activeTab === 'inbound' && 'קבלת סחורה (Inbound)'}
             {activeTab === 'billing' && 'חיובים וחוזים'}
